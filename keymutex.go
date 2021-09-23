@@ -33,9 +33,8 @@ func (km *KeyMutex) Lock(k string) {
 }
 
 // Unlock releases the lock for the specified key.
-func (km *KeyMutex) Unlock(k string) error {
+func (km *KeyMutex) Unlock(k string) {
 	km.mutexes[hashString32(k)%uint32(len(km.mutexes))].Unlock()
-	return nil
 }
 
 // hashString32 performs a fnv-1a hash on the given string, withoug having to
